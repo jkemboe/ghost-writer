@@ -5,25 +5,46 @@
   padding: 30px;
   font-size: 24px;
 }
+.container {
+  display:flex;
+  flex-flow: row wrap;
+}
+.container div {
+  width: 72px;
+  margin: 10px;
+  border: 2px solid white;
+  padding: 40px;
+  border-radius: 4px;
+  background-color: white;
+  color: midnightblue;
+  text-align: center;
+}
+.container div:hover {
+  cursor: pointer;
+}
 .ghost-message-black {
   background-color: black;
   padding: 30px;
   color: white;
+  border: 1px solid black;
 }
 .ghost-message-red {
   background-color: red;
   padding: 30px;
   color: white;
+  border: 1px solid red;
 }
 .ghost-message-blue {
   background-color: blue;
   padding: 30px;
   color: white;
+  border: 1px solid blue;
 }
 .ghost-message-white {
   background-color: white;
   padding: 30px;
   color: black;
+  border: 1px solid white;
 }
  input {
   padding: 10px;

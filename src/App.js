@@ -7,17 +7,17 @@ class Main extends React.Component {
     this.state = {
       data:[],
       select: ['Black','Red','White','Blue'],
-      color: 'ghost-message-black'
+      color: 'ghost-message-black',
+      divBox: new Array(21).fill('div-box')
     }
   }
 
  updateMessage = (e) => {
     let inputText = e.key
-    this.setState(state => ({
-      data: state.data.concat(inputText)
-    }))
+    this.setState(state => ({data: state.data.concat(inputText)}))
   }
-changeBgColor = (e) => {
+
+ changeBgColor = (e) => {
   let chosenColor = e.nativeEvent.target.value 
     if(chosenColor === 'Red'){
       this.setState(() => ({color: 'ghost-message-red'}))
@@ -28,11 +28,11 @@ changeBgColor = (e) => {
     } else {
       this.setState(() => ({color: 'ghost-message-black'}))
     }
-}
+  }
   render(){
     return (
       <div>
-        <MainHeader/>
+        <MainHeader divBox={this.state.divBox}/>
         <GhostMessage updateMessage={this.updateMessage} select={this.state.select} changeBgColor={this.changeBgColor} classColor={this.state.color}/>
         <DisplayGhostMessage displayMsg={this.state} classColor={this.state.color}/>
       </div>
@@ -40,12 +40,27 @@ changeBgColor = (e) => {
   }
 }
 
-const MainHeader = () => {
+const MainHeader = ({divBox}) => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App"> 
+    <div className="container">
+      {divBox.map((val,key) => {
+        if(key % 6 === 0) {
+          return <div key={key}>{key}</div>
+        } else if(key % 5 === 0){
+          return <div key={key}>{key}</div>
+        } else if(key % 4 === 1){
+          return <div key={key}>{key}</div>
+        } else if(key % 2 === 0) {
+          return <div key={key}>{key}</div>
+        } else {
+          return <div key={key}>{key}</div>
+        }
+      })}
+    </div>
+          {/* <header className="App-header">
           <h1>Ghost Writer</h1>
-      </header>
+      </header> */}
     </div>
   );
 }
